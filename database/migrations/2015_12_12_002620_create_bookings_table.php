@@ -18,7 +18,7 @@ class CreateBookingsTable extends Migration
             $table->increments('id');
             $table->string('appointment_name');
             $table->text('appointment_description');
-            $table->dateTime('time_booked');
+            $table->timestamp('time_booked');
             // add in category_id --> booking category.
             // add in user_id --> referencing user.
             $table->timestamps();

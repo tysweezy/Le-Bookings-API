@@ -19,4 +19,16 @@ class BookingsController extends Controller {
 
     // return json response
   }
+
+  /**
+   * Store the booking 
+   *
+   * @return response
+   */
+  public function store()
+  {
+    // store booking
+  }
+
+  
 }
