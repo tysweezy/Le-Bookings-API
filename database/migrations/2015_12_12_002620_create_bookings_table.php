@@ -21,7 +21,7 @@ class CreateBookingsTable extends Migration
             $table->timestamp('time_booked');
             // add in category_id --> booking category.
             // add in user_id --> referencing user.
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 

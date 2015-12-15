@@ -1,18 +1,5 @@
 <?php
 
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
-|
-*/
-
-
 use Carbon\Carbon;
 
 $app->get('/', function () use ($app) {
@@ -25,8 +12,15 @@ $app->get('/', function () use ($app) {
 });
 
 
+
 // api group
 $app->group(['prefix' => 'api'], function($app) {
+
+  // category > booking. Each Booking will be cateorized in a Category
+    // a category is a way to group bookings... i.e. appointments, meetings, etc. 
+    // category/create -- POST -- Create a Category
+    // cateories       -- GET  -- All Categories
+
   $app->get('bookings', 'App\Http\Controllers\BookingsController@all');
 
   $app->post('booking/create', 'App\Http\Controllers\BookingsController@store');
