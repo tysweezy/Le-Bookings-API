@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
 class BookingsController extends Controller {
 
   /**
@@ -20,6 +24,19 @@ class BookingsController extends Controller {
     // return json response
   }
 
+
+  /**
+   * store category
+   * 
+   * @return response
+   */
+  public function storeCategory(Request $request)
+  {
+    $category = Category::create($request->all());
+
+    return response()->json($category);
+  }
+
   /**
    * Store the booking 
    *
@@ -29,6 +46,5 @@ class BookingsController extends Controller {
   {
     // store booking
   }
-
   
 }

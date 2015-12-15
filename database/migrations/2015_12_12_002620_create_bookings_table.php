@@ -8,7 +8,6 @@ class CreateBookingsTable extends Migration
     /**
      * Run the migrations.
      *
-     * @todo add in category_id field and FK constraint.
      * @todo add in user_id field and FK constraint.
      * @return void
      */
@@ -20,9 +19,14 @@ class CreateBookingsTable extends Migration
             $table->text('appointment_description');
             $table->timestamp('time_booked');
             // add in category_id --> booking category.
-            // add in user_id --> referencing user.
+            $table->integer('category_id')->unsigned();
             $table->timestamps(); 
+            $table->foreign('category_id')
+                  ->references('id')
+                  ->on('category')
+                  ->onDelete('cascade');
         });
+
     }
 
     /**
