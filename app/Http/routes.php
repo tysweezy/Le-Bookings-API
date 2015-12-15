@@ -22,6 +22,8 @@ $app->group(['prefix' => 'api'], function($app) {
     // cateories       -- GET  -- All Categories
     // category/{id}   -- GET --  Get specific category
 
+  $app->get('categories', 'App\Http\Controllers\BookingsController@categories');
+
   $app->post('category/create', 'App\Http\Controllers\BookingsController@storeCategory');
  
 

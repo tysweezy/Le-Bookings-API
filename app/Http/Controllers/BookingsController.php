@@ -24,6 +24,17 @@ class BookingsController extends Controller {
     // return json response
   }
 
+  /**
+   * Retrieve all categories
+   * 
+   * @return response
+   */
+  public function categories()
+  {
+    $categories = Category::all();
+
+    return response()->json($categories);
+  }
 
   /**
    * store category
