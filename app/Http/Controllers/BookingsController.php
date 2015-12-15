@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Booking;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,13 +17,10 @@ class BookingsController extends Controller {
    */
   public function all()
   {
-    // data structure
-    $bookings = ['some booking', 'another booking'];
+    
+    $bookings = Booking::all();
 
-    dd($bookings);
-
-
-    // return json response
+    return response()->json($bookings);
   }
 
   /**
@@ -53,9 +52,24 @@ class BookingsController extends Controller {
    *
    * @return response
    */
-  public function store()
+  public function storeBooking(Request $request, $category_id)
   {
-    // store booking
+    $category = Category::find($category_id); 
+
+    if (! $category) {
+      dd('category does not exist');
+    }
+
+    $booking = new Booking;
+    $booking->appointment_name           = $request->get('appointment_name');
+    $booking->appointment_description    = $request->get('appointment_description');
+    $booking->time_booked                = Carbon::now();
+    $booking->category_id                = $category->id;
+
+    $booking->save();
+   
+    return response()->json($booking);
+
   }
   
 }

@@ -22,13 +22,12 @@ $app->group(['prefix' => 'api'], function($app) {
     // cateories       -- GET  -- All Categories
     // category/{id}   -- GET --  Get specific category
 
+
   $app->get('categories', 'App\Http\Controllers\BookingsController@categories');
-
-  $app->post('category/create', 'App\Http\Controllers\BookingsController@storeCategory');
- 
-
 
   $app->get('bookings', 'App\Http\Controllers\BookingsController@all');
 
-  $app->post('booking/create', 'App\Http\Controllers\BookingsController@store');
+  $app->post('category/create', 'App\Http\Controllers\BookingsController@storeCategory');
+ 
+  $app->post('category/{id}/booking/create', 'App\Http\Controllers\BookingsController@storeBooking');
 });
