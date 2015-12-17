@@ -36,6 +36,18 @@ class BookingsController extends Controller {
   }
 
   /**
+   * Show a specific category
+   * 
+   * @return response
+   */
+  public function showCategory(Request $request, $category_id)
+  {
+    $category = Category::with('bookings')->find($category_id);
+
+    return response()->json($category);
+  }
+
+  /**
    * store category
    * 
    * @return response
