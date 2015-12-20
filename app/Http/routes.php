@@ -27,6 +27,8 @@ $app->group(['prefix' => 'api'], function($app) {
 
   $app->get('bookings', 'App\Http\Controllers\BookingsController@all');
 
+  $app->get('booking/{id}', 'App\Http\Controllers\BookingsController@showBooking');
+
   $app->get('category/{id}', 'App\Http\Controllers\BookingsController@showCategory');
 
   $app->post('category/create', 'App\Http\Controllers\BookingsController@storeCategory'); 

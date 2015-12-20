@@ -23,6 +23,19 @@ class BookingsController extends Controller {
     return response()->json($bookings);
   }
 
+
+  /**
+   * Show a particular booking
+   * 
+   * @return response
+   */
+  public function showBooking($booking_id)
+  {
+    $booking = Booking::with('category')->find($booking_id);
+
+    return response()->json($booking); 
+  }
+
   /**
    * Retrieve all categories
    * 
